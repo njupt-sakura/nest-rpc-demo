@@ -44,13 +44,17 @@ export class ItemController implements ItemServiceController {
   }
 
   async findOneWithOrder(request: ItemById): Promise<ItemWithOrderInfo> {
+    // Call order RPC service
     const order = await lastValueFrom<Order>(
       this.itemService.orderServiceClient.findOne({ id: request.id }),
     );
+    if (!order) {
+      throw new Error('Order not found');
+    }
 
     const item = items.find((item) => item.id === request.id);
-    if (!item || !order) {
-      throw new Error('Item or order not found');
+    if (!item) {
+      throw new Error('Item not found');
     }
     return { ...item, order };
   }

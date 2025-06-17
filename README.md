@@ -58,9 +58,4 @@ cd ./client
 # "type": "module"
 pnpm add @types/node ts-proto -D
 pnpm add @grpc/grpc-js @grpc/proto-loader
-
-mkdir ./codegen
-protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto \
-       --ts_proto_out=./codegen                     \
-       --proto_path=../proto item.proto
 ```
