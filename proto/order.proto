@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package order;
 
-option go_package = "./pb;pb";
+option go_package = "./codegen;codegen";
 // import "item.proto";
 
 service OrderService {
