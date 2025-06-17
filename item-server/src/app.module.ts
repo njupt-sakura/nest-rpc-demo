@@ -13,7 +13,7 @@ import { ORDER_CLIENT_NAME } from './const';
         name: ORDER_CLIENT_NAME,
         transport: Transport.GRPC,
         options: {
-          url: 'localhost: 9002',
+          url: 'localhost:9002',
           package: ORDER_PACKAGE_NAME, // order
           protoPath: join(__dirname, '../../proto/order.proto'),
         },
