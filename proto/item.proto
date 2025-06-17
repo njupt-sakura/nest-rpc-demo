@@ -4,10 +4,13 @@ package item;
 
 option go_package = "./pb;pb";
 
+import "common.proto";
 import "order.proto";
 
 service ItemService {
   rpc FindOne (ItemById) returns (Item) {}
+  rpc FindMany (common.Pagination) returns (ItemList) {}
+  rpc FindOneWithOrder (ItemById) returns (ItemWithOrderInfo) {}
 }
 
 message ItemById {
@@ -17,14 +20,15 @@ message ItemById {
 message Item {
   int32 id = 1;
   string name = 2;
+  string url = 3;
 }
 
-// message ItemWithOrderInfo {
-//   int32 id = 1;
-//   string name = 2;
-//   order.Order order = 3;
-// }
+message ItemWithOrderInfo {
+  int32 id = 1;
+  string name = 2;
+  order.Order order = 3;
+}
 
-// message ItemList {
-//   repeated Item list = 1;
-// }
+message ItemList {
+  repeated Item list = 1;
+}
