@@ -59,3 +59,22 @@ cd ./client
 pnpm add @types/node ts-proto -D
 pnpm add @grpc/grpc-js @grpc/proto-loader
 ```
+
+## Test
+
+```bash
+# Item Service (Powered by Node.js)
+cd ./item-server && pnpm start
+
+# Order Service (Powered by Go)
+cd ./order-server && go run .
+
+# Client
+cd ./client && node ./main.js
+
+# [orderClient] findOne res: {"id":1,"price":1.1100000143051147}
+# [itemClient] findOne res: {"id":1,"name":"161043261","url":"https://github.com/161043261"}
+# [orderClient] findOneWithItem res: {"id":1,"price":1.1100000143051147,"item":{"id":1,"name":"161043261"}}
+# [itemClient] findOneWithOrder res: {"id":1,"name":"161043261","order":{"id":1,"price":1.1100000143051147}}
+# [itemClient] findMany res: {"list":[{"id":1,"name":"161043261","url":"https://github.com/161043261"},{"id":2,"name":"tianchenghang","url":"https://github.com/tianchenghang"}]}
+```
