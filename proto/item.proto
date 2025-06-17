@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package item;
+
+option go_package = "./pb;pb";
+
+import "order.proto";
+
+service ItemService {
+  rpc FindOne (ItemById) returns (Item) {}
+}
+
+message ItemById {
+  int32 id = 1;
+}
+
+message Item {
+  int32 id = 1;
+  string name = 2;
+}
+
+// message ItemWithOrderInfo {
+//   int32 id = 1;
+//   string name = 2;
+//   order.Order order = 3;
+// }
+
+// message ItemList {
+//   repeated Item list = 1;
+// }
